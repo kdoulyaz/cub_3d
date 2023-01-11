@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rgb.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kdoulyaz <kdoulyaz <kdoulyaz@student.42    +#+  +:+       +#+        */
+/*   By: mac <mac@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 19:00:57 by kdoulyaz          #+#    #+#             */
-/*   Updated: 2023/01/09 19:15:04 by kdoulyaz         ###   ########.fr       */
+/*   Updated: 2023/01/11 20:21:53 by mac              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,4 +123,12 @@ int	fill_rgb(char *str, t_rgb *rgb)
 		|| rgb->g > 255 || rgb->b < 0 || rgb->b > 255)
 		return (0);
 	return (1);
+}
+
+unsigned long	convert_to_hex(t_rgb *rgb)
+{
+	int	hex;
+
+	hex = (rgb->r << 16) + (rgb->g << 8) + rgb->b;
+	return (hex);
 }

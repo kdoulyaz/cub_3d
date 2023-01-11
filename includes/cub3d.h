@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kdoulyaz <kdoulyaz <kdoulyaz@student.42    +#+  +:+       +#+        */
+/*   By: mac <mac@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:57:35 by kdoulyaz          #+#    #+#             */
-/*   Updated: 2023/01/11 15:47:56 by kdoulyaz         ###   ########.fr       */
+/*   Updated: 2023/01/11 20:48:58 by mac              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,29 @@
 # include <fcntl.h>
 # include <stdbool.h>
 # include "get_next_line.h"
+
+/*
+ * Colors :
+*/
+
+# define BLACK 0x000000
+# define WHITE 0xFFFFFF
+
+/*
+ * Mlx Keymap :
+*/
+
+# define KEY_ESC 53
+# define KEY_LEFT 123
+# define KEY_RIGHT 124
+# define KEY_W 13
+# define KEY_S 1
+# define KEY_A 0
+# define KEY_D 2
+# define SHOW_MAP 257
+
+# define SCREEN_POS 1700
+# define ROT_SPEED 0.05
 
 /*
 * Game defines :
@@ -142,6 +165,17 @@ typedef struct s_ray
 	int		floor_tex_y;
 }	t_ray;
 
+typedef struct s_image
+{
+	void	*image;
+	int		*addr;
+	int		bpp;
+	int		line_length;
+	int		endian;
+	int		width;
+	int		height;
+}	t_image;
+
 typedef struct s_game
 {
 	unsigned int	buf[HEIGHT][WIDTH];
@@ -160,28 +194,46 @@ typedef struct s_game
 	char			*ea;
 	t_keys			keys;
 	void			*mlx;
+	t_image			image;
+	void			*win;
+	int				res_buff;
 }					t_game;
 
-void	init_game(t_game *game);
-void	init_textures(t_game *game);
-int		incorrect_file(char *str);
-void	init_params(t_game *game);
-int		parse_file(char *file, t_game *game);
-void	parse_conf(char *line, int fd, t_game *game);
-void	print_err(char *s);
-int		is_valid(char *s);
-void	calcule(t_game *game, char *line);
-char	*ss_strdup(char *s);
-int		fill_rgb(char *str, t_rgb *rgb);
-void	free_exit(t_game *game);
-int		ft_atoi(char *s);
-char	*ft_strdup(char *s);
-void	is_corr_map(t_game *game);
-void	set_player(t_game *game);
-void	get_player(t_game *game);
-int		next_length(t_map *map, int i, int j);
-int		previous_length(t_map *map, int i, int j);
-void	free_game(t_game *game);
-int		mlx_exec(t_game *game);
+void			init_game(t_game *game);
+void			init_textures(t_game *game);
+int				incorrect_file(char *str);
+void			init_params(t_game *game);
+int				parse_file(char *file, t_game *game);
+void			parse_conf(char *line, int fd, t_game *game);
+void			print_err(char *s);
+int				is_valid(char *s);
+void			calcule(t_game *game, char *line);
+char			*ss_strdup(char *s);
+int				fill_rgb(char *str, t_rgb *rgb);
+void			free_exit(t_game *game);
+int				ft_atoi(char *s);
+char			*ft_strdup(char *s);
+void			is_corr_map(t_game *game);
+void			set_player(t_game *game);
+void			get_player(t_game *game);
+int				next_length(t_map *map, int i, int j);
+int				previous_length(t_map *map, int i, int j);
+void			free_game(t_game *game);
+int				mlx_exec(t_game *game);
+void			load_textures(t_game *game);
+void			init_ray(t_game *game, int x);
+void			init_stepside_dist(t_game *game);
+void			dda(t_game *game);
+void			texture_id(t_game *game);
+void			calc_screen_line(t_game *game);
+void			put_texture(t_game *game, int x);
+void			draw_ceiling_floor(t_game *game);
+void			draw_floor(t_game *game, int x);
+unsigned long	convert_to_hex(t_rgb *rgb);
+void			draw_map(t_game *game);
+void			my_mlx_pixel_put_char(t_game *game, int x, int y, int color);
+void			draw(t_game *game);
+void			draw_player(t_game *game);
+void			menu(t_game *game);
 
 #endif
