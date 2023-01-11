@@ -6,7 +6,7 @@
 /*   By: kdoulyaz <kdoulyaz <kdoulyaz@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:57:35 by kdoulyaz          #+#    #+#             */
-/*   Updated: 2023/01/09 19:16:24 by kdoulyaz         ###   ########.fr       */
+/*   Updated: 2023/01/11 15:47:56 by kdoulyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <unistd.h>
 # include <string.h>
 # include <fcntl.h>
+# include <stdbool.h>
 # include "get_next_line.h"
 
 /*
@@ -74,6 +75,17 @@ typedef struct s_rgb
 	int			g;
 	int			b;
 }	t_rgb;
+
+typedef struct s_key
+{
+	bool	w;
+	bool	a;
+	bool	s;
+	bool	d;
+	bool	right_arrow;
+	bool	left_arrow;
+	bool	show_map;
+}	t_keys;
 
 typedef struct s_ray
 {
@@ -146,6 +158,8 @@ typedef struct s_game
 	char			*so;
 	char			*we;
 	char			*ea;
+	t_keys			keys;
+	void			*mlx;
 }					t_game;
 
 void	init_game(t_game *game);
@@ -161,5 +175,13 @@ char	*ss_strdup(char *s);
 int		fill_rgb(char *str, t_rgb *rgb);
 void	free_exit(t_game *game);
 int		ft_atoi(char *s);
+char	*ft_strdup(char *s);
+void	is_corr_map(t_game *game);
+void	set_player(t_game *game);
+void	get_player(t_game *game);
+int		next_length(t_map *map, int i, int j);
+int		previous_length(t_map *map, int i, int j);
+void	free_game(t_game *game);
+int		mlx_exec(t_game *game);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: kdoulyaz <kdoulyaz <kdoulyaz@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 17:06:09 by kdoulyaz          #+#    #+#             */
-/*   Updated: 2023/01/09 19:47:15 by kdoulyaz         ###   ########.fr       */
+/*   Updated: 2023/01/10 18:40:33 by kdoulyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,7 @@ int	is_valid(char *s)
 void	calcule(t_game *game, char *line)
 {
 	if ((int)ft_strlene(line) > game->map->width)
-	{
 		game->map->width = (int)ft_strlene(line);
-	}
 	game->map->height++;
 }
 

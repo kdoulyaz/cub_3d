@@ -6,7 +6,7 @@
 /*   By: kdoulyaz <kdoulyaz <kdoulyaz@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 22:08:50 by kdoulyaz          #+#    #+#             */
-/*   Updated: 2023/01/09 16:45:04 by kdoulyaz         ###   ########.fr       */
+/*   Updated: 2023/01/10 18:16:16 by kdoulyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	init_params(t_game *game)
 	game->floor_rgb = malloc(sizeof(t_rgb));
 	game->ceiling_rgb = malloc(sizeof(t_rgb));
 	if (!game->map || !game->player || !game->floor_rgb || !game->ceiling_rgb)
-		(write(2, "Error : Malloc() failed\n", 24), exit(1));
+		(write(2, "Error : Malloc() failed\n", 24), exit(EXIT_FAILURE));
 	game->zoom = ZOOM;
 	game->no = 0;
 	game->so = 0;
@@ -58,7 +58,7 @@ void	init_textures(t_game *game)
 
 	game->textures = (int **)malloc(sizeof(int *) * 8);
 	if (!game->textures)
-		(write(2, "Error : Malloc() failed\n", 24), exit(1));
+		(write(2, "Error : Malloc() failed\n", 24), exit(EXIT_FAILURE));
 	i = -1;
 	while (++i < 8)
 	{

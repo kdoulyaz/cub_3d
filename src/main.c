@@ -6,7 +6,7 @@
 /*   By: kdoulyaz <kdoulyaz <kdoulyaz@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 22:01:42 by kdoulyaz          #+#    #+#             */
-/*   Updated: 2023/01/09 16:44:27 by kdoulyaz         ###   ########.fr       */
+/*   Updated: 2023/01/11 15:32:21 by kdoulyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ int	main(int ac, char **av)
 				exit(EXIT_FAILURE));
 		if (!parse_file(av[1], game))
 		{
-			// free_game(game);
+			free_game(game);
 			(write(2, "Error : invalid configuration file\n", 35), \
 				exit(EXIT_FAILURE));
 		}
 		write(1, "Starting mlx ...\n", 17);
-		// if (mlx_exec(game))
-		// 	return (EXIT_FAILURE);
+		if (mlx_exec(game))
+			return (EXIT_FAILURE);
 		write(1, "Quit...\n", 8);
 		return (0);
 	}

@@ -6,7 +6,7 @@
 #    By: kdoulyaz <kdoulyaz <kdoulyaz@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 15:41:37 by kdoulyaz          #+#    #+#              #
-#    Updated: 2023/01/09 19:14:07 by kdoulyaz         ###   ########.fr        #
+#    Updated: 2023/01/11 15:33:10 by kdoulyaz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,11 @@ SRC = ./src/main.c \
 	  ./src/utils.c \
 	  ./src/freer.c \
 	  ./src/rgb.c \
+	  ./src/libft_tools.c \
+	  ./src/map.c \
+	  ./src/player.c \
+	  ./src/utils2.c \
+	  ./src/mlx.c \
 	  
 all: $(EXE)
 
