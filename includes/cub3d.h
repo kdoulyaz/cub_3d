@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mac <mac@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: kdoulyaz <kdoulyaz <kdoulyaz@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:57:35 by kdoulyaz          #+#    #+#             */
-/*   Updated: 2023/01/11 20:48:58 by mac              ###   ########.fr       */
+/*   Updated: 2023/01/11 23:30:49 by kdoulyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -235,5 +235,16 @@ void			my_mlx_pixel_put_char(t_game *game, int x, int y, int color);
 void			draw(t_game *game);
 void			draw_player(t_game *game);
 void			menu(t_game *game);
+void			calculate_ray_draw(t_game *game);
+void			draw_rectangle(t_game *game, int x, int y, int color);
+int				mouse_hooks(int a, int x, int y, t_game *game);
+void			down_movement(t_game *game);
+void			up_movement(t_game *game);
+int				key_hook_pressed(int key, t_game *game);
+void			left_movement(t_game *game);
+void			right_movement(t_game *game);
+int				key_hook_released(int key, t_game *game);
+int				clean_close(t_game *game);
+void			look_right(t_game *game);
 
 #endif

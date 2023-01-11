@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mac <mac@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: kdoulyaz <kdoulyaz <kdoulyaz@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 15:31:52 by kdoulyaz          #+#    #+#             */
-/*   Updated: 2023/01/11 19:58:10 by mac              ###   ########.fr       */
+/*   Updated: 2023/01/11 23:29:18 by kdoulyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,38 +25,6 @@ int	init(t_game *game)
 	if (!game->ray)
 		(write(2, "Error : Malloc() failed\n", 24), exit(EXIT_FAILURE));
 	return (0);
-}
-
-void	load_img(t_game *game, int *buff, char *path, t_image *img)
-{
-	int	y;
-	int	x;
-
-	y = -1;
-	img->image = mlx_xpm_file_to_image(game->mlx, path, &img->width, &img->height);
-	if (!img->image)
-		(write(2, "Error: Invalid texture path\n", 28), exit(EXIT_FAILURE));
-	img->addr = (int *)mlx_get_data_addr(img->image, &img->bpp, &img->line_length, &img->endian);
-	while (++y < img->height)
-	{
-		x = -1;
-		while (++x < img->width)
-			buff[img->width * y + x] = img->addr[img->width * y + x];
-	}
-	mlx_destroy_image(game->mlx, img->image);
-	return ;
-}
-
-void	load_textures(t_game *game)
-{
-	t_image	img;
-
-	load_img(game, game->textures[0], game->ea, &img);
-	load_img(game, game->textures[1], game->we, &img);
-	load_img(game, game->textures[2], game->no, &img);
-	load_img(game, game->textures[3], game->so, &img);
-	return ;
-
 }
 
 void	raycaster(t_game *game)
@@ -112,5 +80,10 @@ int	mlx_exec(t_game *game)
 			&game->image.bpp, &game->image.line_length, &game->image.endian);
 	game->win = mlx_new_window(game->mlx, WIDTH, HEIGHT, "Cub3D");
 	mlx_loop_hook(game->mlx, gam, game);
+	mlx_mouse_hook(game->win, mouse_hooks, game);
+	mlx_hook(game->win, 2, (1L << 0), key_hook_pressed, game);
+	mlx_hook(game->win, 3, (1L << 1), key_hook_released, game);
+	mlx_hook(game->win, 17, (1L << 17), clean_close, game);
+	mlx_loop(game->mlx);
 	return (0);
 }

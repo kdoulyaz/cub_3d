@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mac <mac@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: kdoulyaz <kdoulyaz <kdoulyaz@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 19:58:41 by mac               #+#    #+#             */
-/*   Updated: 2023/01/11 20:29:54 by mac              ###   ########.fr       */
+/*   Updated: 2023/01/11 21:59:58 by kdoulyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,24 +108,4 @@ void	calculate_ray_draw(t_game *game)
 	game->ray->draw_end = game->ray->line_height / 2 + HEIGHT / 2;
 	if (game->ray->draw_end >= HEIGHT)
 		game->ray->draw_end = HEIGHT - 1;
-}
-
-void	calc_screen_line(t_game *game)
-{
-	calculate_ray_draw(game);
-	if (game->ray->side == 0)
-		game->ray->wall_x = game->player->pos_y
-			+ game->ray->perp_wall_dist * game->ray->ray_dir_y;
-	else
-		game->ray->wall_x = game->player->pos_x
-			+ game->ray->perp_wall_dist * game->ray->ray_dir_x;
-	game->ray->wall_x -= floor(game->ray->wall_x);
-	game->ray->tex_x = (int)(game->ray->wall_x * (double)TEX_WIDTH);
-	if (game->ray->side == 0 && game->ray->ray_dir_x > 0)
-		game->ray->tex_x = TEX_WIDTH - game->ray->tex_x - 1;
-	if (game->ray->side == 1 && game->ray->ray_dir_y < 0)
-		game->ray->tex_x = TEX_WIDTH - game->ray->tex_x - 1;
-	game->ray->step = 1.0 * TEX_HEIGHT / game->ray->line_height;
-	game->ray->tex_pos = (game->ray->draw_start - HEIGHT / 2
-			+ game->ray->line_height / 2) * game->ray->step;
 }

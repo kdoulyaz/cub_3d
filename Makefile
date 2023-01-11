@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mac <mac@student.42.fr>                    +#+  +:+       +#+         #
+#    By: kdoulyaz <kdoulyaz <kdoulyaz@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 15:41:37 by kdoulyaz          #+#    #+#              #
-#    Updated: 2023/01/11 20:15:21 by mac              ###   ########.fr        #
+#    Updated: 2023/01/11 23:02:01 by kdoulyaz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ OBJ = $(SRC:.c=.o)
 
 EXE = cub3D
 
-MLX = -I /usr/X11/include -g -L /usr/X11/lib -l mlx -framework OpenGL -framework AppKit
+MLX = -I /usr/X11/include -g -l mlx -framework OpenGL -framework AppKit
 
 FLAGS = -Wall -Wextra -Werror -O3 -fsanitize=address -g 
 
@@ -36,6 +36,10 @@ SRC = ./src/main.c \
 	  ./src/mlx.c \
 	  ./src/raycasting.c \
 	  ./src/textures.c \
+	  ./src/mlx_utils.c \
+	  ./src/draw.c \
+	  ./src/hooks.c \
+	  ./src/movement.c \
 	  
 all: $(EXE)
 
