@@ -6,7 +6,7 @@
 /*   By: kdoulyaz <kdoulyaz <kdoulyaz@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 22:49:47 by kdoulyaz          #+#    #+#             */
-/*   Updated: 2023/01/11 23:28:36 by kdoulyaz         ###   ########.fr       */
+/*   Updated: 2023/01/17 01:17:40 by kdoulyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,12 @@ int	clean_close(t_game *game)
 int	key_hook_pressed(int key, t_game *game)
 {
 	if (key == SHOW_MAP)
-		game->keys.show_map = true;
+	{
+		if (game->keys.show_map)
+			game->keys.show_map = false;
+		else
+			game->keys.show_map = true;
+	}
 	if (key == KEY_ESC)
 		clean_close(game);
 	if (key == KEY_W)
@@ -91,7 +96,5 @@ int	key_hook_released(int key, t_game *game)
 		game->keys.left_arrow = false;
 	if (key == KEY_RIGHT && game->keys.right_arrow == true)
 		game->keys.right_arrow = false;
-	if (key == SHOW_MAP)
-		game->keys.show_map = false;
 	return (EXIT_SUCCESS);
 }

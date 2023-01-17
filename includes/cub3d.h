@@ -6,7 +6,7 @@
 /*   By: kdoulyaz <kdoulyaz <kdoulyaz@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:57:35 by kdoulyaz          #+#    #+#             */
-/*   Updated: 2023/01/11 23:30:49 by kdoulyaz         ###   ########.fr       */
+/*   Updated: 2023/01/17 01:15:16 by kdoulyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@
 # define KEY_S 1
 # define KEY_A 0
 # define KEY_D 2
-# define SHOW_MAP 257
+# define SHOW_MAP 46
 
 # define SCREEN_POS 1700
 # define ROT_SPEED 0.05

@@ -6,7 +6,7 @@
 /*   By: kdoulyaz <kdoulyaz <kdoulyaz@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 22:00:59 by kdoulyaz          #+#    #+#             */
-/*   Updated: 2023/01/11 22:04:54 by kdoulyaz         ###   ########.fr       */
+/*   Updated: 2023/01/17 01:11:04 by kdoulyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	draw_map(t_game *game)
 		while (j < (int)ft_strlene(game->map->mtrx[i]))
 		{
 			if (game->map->mtrx[i][j] == '1')
-				draw_rectangle(game, j * game->zoom, i * game->zoom, 0xFF0000);
+				draw_rectangle(game, j * game->zoom, i * game->zoom, 0xA9A9A9);
 			else
 				draw_rectangle(game, j * game->zoom, i * game->zoom, 0xFFFFFF);
 			j++;

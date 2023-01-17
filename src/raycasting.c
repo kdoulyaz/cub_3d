@@ -6,7 +6,7 @@
 /*   By: kdoulyaz <kdoulyaz <kdoulyaz@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 19:58:41 by mac               #+#    #+#             */
-/*   Updated: 2023/01/11 21:59:58 by kdoulyaz         ###   ########.fr       */
+/*   Updated: 2023/01/17 00:57:24 by kdoulyaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	init_ray(t_game *game, int x)
 {
+	// (void)x;
 	game->ray->camera_x = 2 * x / (float) WIDTH - 1;
 	game->ray->ray_dir_x = game->player->dir_x
 		+ game->player->plane_x * game->ray->camera_x;
